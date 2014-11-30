@@ -13,19 +13,20 @@
 Route::get('/get-environment',function() {
 
     echo "Environment: ".App::environment();
+    $results = DB::select('SHOW DATABASES;');
+    echo print_r($results);
 
 });
 
 Route::get('/', function()
 {
-	//return View::make('hello');
-	echo "comic home page";
+	return View::make('home');
 });
 
-Route::post('/', function()
+Route::post('/', array('before' => 'csrf', function()
 {
-	// for login form
-});
+    // Handle our posted form data.
+}));
 
 Route::get('/list/{tag}', function($tag)
 {
@@ -34,7 +35,9 @@ Route::get('/list/{tag}', function($tag)
 
 Route::get('/{username}/home', function($username)
 {
-	echo "This is the home of ".$username;
+	$data['username'] = $username;
+
+	return View::make('user_home', $data);
 });
 
 Route::get('/new', function()
