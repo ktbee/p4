@@ -83,6 +83,22 @@ Route::get('/{username}/list/{tag}', function($username, $tag)
 	echo $username."'s comics listing by tag ".$tag;
 });
 
+
+/**
+* User
+* 
+*/
+Route::get('/signup','UserController@getSignup' );
+Route::get('/login', 'UserController@getLogin' );
+Route::post('/signup', 'UserController@postSignup' );
+Route::post('/login', 'UserController@postLogin' );
+Route::get('/logout', 'UserController@getLogout' );
+
+/**
+* CRUD Comics
+* 
+*/
+
 Route::get('/comic', 'ComicController@getIndex');
 Route::get('/comic/create', 'ComicController@getCreate');
 Route::post('/comic', 'ComicController@postStore');
@@ -90,3 +106,4 @@ Route::get('/comic/{comic_id}', 'ComicController@show');
 Route::get('/comic/{comic_id}/edit', 'ComicController@edit');
 Route::put('/comic/{comic_id}', 'ComicController@update');
 Route::delete('/comic/{comic_id}', 'ComicController@destroy');
+

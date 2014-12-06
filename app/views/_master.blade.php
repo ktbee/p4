@@ -7,7 +7,15 @@
 		@yield('title', 'Comic Blog')
 	</title>
 </head>
-<body>
+<body class="container">
+
+	<h1>Welcome to Comic Blog</h1>
+	<br>
+	<br>
+
+	@if(Session::get('flash_message'))
+		<div class='flash-message'>{{ Session::get('flash_message') }}</div>
+	@endif
 
 	@yield('content')
 

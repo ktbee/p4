@@ -3,6 +3,15 @@
 
 class ComicController extends BaseController {
 
+	public function __construct() {
+
+		
+		parent::__construct();
+		
+		//need to login to see and create comics
+        $this->beforeFilter('auth', array('except' => ['getIndex']));
+    }
+
 
 	/**
 	 * Display a listing of the resource.
