@@ -1,13 +1,15 @@
 <?php
 
-class ComicController extends \BaseController {
+
+class ComicController extends BaseController {
+
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function getIndex()
 	{
 		//
 	}
@@ -18,9 +20,9 @@ class ComicController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function getCreate()
 	{
-		//
+		return View::make('new_post');
 	}
 
 
@@ -29,9 +31,27 @@ class ComicController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		//
+	public function postStore()
+	{	
+		//get input from form
+		$comic = new Comic();
+		$comic->title = Input::get('title');
+		$comic->caption = Input::get('caption');
+		$comic->image = Input::file('image');
+		$comic->save();
+
+		$fileName= Input::file('image')->getClientOriginalName();
+		
+		//encode image to store in table
+		$img_data = file_get_contents($comic->image);
+		$type = pathinfo($comic->image, PATHINFO_EXTENSION);
+		$base64 = 'data:image/' . $type . ';base64,' . base64_encode($img_data);
+
+		echo $comic->title."<br>";
+		echo $comic->caption."<br>";
+		echo $fileName."<br>";
+		echo '<img src="data:image/jpeg;base64,' . base64_encode($img_data) . '" />';
+
 	}
 
 

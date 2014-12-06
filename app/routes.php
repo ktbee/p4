@@ -60,15 +60,6 @@ Route::get('/', function()
 	return View::make('home');
 });
 
-Route::post('/', array('before' => 'csrf', function()
-{
-    // Handle our posted form data.
-}));
-
-Route::get('/list/{tag}', function($tag)
-{
-	echo "comic listing by tag ".$tag;
-});
 
 Route::get('/{username}/home', function($username)
 {
@@ -77,10 +68,6 @@ Route::get('/{username}/home', function($username)
 	return View::make('user_home', $data);
 });
 
-Route::get('/comic/create', function()
-{
-	return View::make('new_post');
-});
 
 Route::post('/comic/create', function()
 {
@@ -89,19 +76,16 @@ Route::post('/comic/create', function()
     return 'File was moved.';
 });
 
-Route::post('/edit/{title}', function($title)
-{
-	//process form to edit comic post
-});
+
 
 Route::get('/{username}/list/{tag}', function($username, $tag)
 {
 	echo $username."'s comics listing by tag ".$tag;
 });
 
-Route::get('/comic', 'ComicController@index');
-Route::get('/comic/create', 'ComicController@create');
-Route::post('/comic', 'ComicController@store');
+Route::get('/comic', 'ComicController@getIndex');
+Route::get('/comic/create', 'ComicController@getCreate');
+Route::post('/comic', 'ComicController@postStore');
 Route::get('/comic/{comic_id}', 'ComicController@show');
 Route::get('/comic/{comic_id}/edit', 'ComicController@edit');
 Route::put('/comic/{comic_id}', 'ComicController@update');

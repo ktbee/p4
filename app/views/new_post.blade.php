@@ -10,7 +10,7 @@
 	<h3>Post a new comic</h3>
 	<br>
 	{{ Form::open(array(
-		'url' => 'comic/create',
+		'url' => '/comic',
 		'files' => true
 	)) }}
 		{{ Form::label('title', 'Comic title') }}
