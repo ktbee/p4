@@ -56,7 +56,7 @@ class UserController extends BaseController {
 		# Log in
 		Auth::login($user);
 		
-		return Redirect::to('/')->with('flash_message', 'Welcome to Foobooks!');
+		return Redirect::to('/comic')->with('flash_message', 'Welcome to Foobooks!');
 	}
 	/**
 	* Display the login form
@@ -73,7 +73,7 @@ class UserController extends BaseController {
 		$credentials = Input::only('username', 'password');
 
 		if (Auth::attempt($credentials, $remember = false)) {
-			return Redirect::intended('/')->with('flash_message', 'Welcome Back!');
+			return Redirect::intended('/comic')->with('flash_message', 'Welcome Back!');
 		}
 		else {
 			return Redirect::to('/login')

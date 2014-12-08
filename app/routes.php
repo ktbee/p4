@@ -83,15 +83,16 @@ Route::get('/{username}/list/{tag}', function($username, $tag)
 	echo $username."'s comics listing by tag ".$tag;
 });
 
-Route::get('/truncate', function() {
+/* Route::get('/truncate', function() {
 
     # Clear the tables to a blank slate
     DB::statement('SET FOREIGN_KEY_CHECKS=0'); # Disable FK constraints so that all rows can be deleted, even if there's an associated FK
     DB::statement('DROP TABLE comics');
     DB::statement('DROP TABLE users');
     DB::statement('DROP TABLE migrations');
-    DB::statement('DROP TABLE comic_user');
 });
+
+*/
 
 /**
 * User

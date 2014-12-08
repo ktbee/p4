@@ -20,7 +20,7 @@ class ComicController extends BaseController {
 	 */
 	public function getIndex()
 	{
-		//
+		return View::make('user_home');
 	}
 
 
@@ -47,9 +47,8 @@ class ComicController extends BaseController {
 		$comic->title = Input::get('title');
 		$comic->caption = Input::get('caption');
 		$comic->image = Input::file('image');
+		$comic->user_id = Auth::id(); // need to grab the user's ID for the post
 		$comic->save();
-
-		$fileName= Input::file('image')->getClientOriginalName();
 		
 		//encode image to store in table
 		$img_data = file_get_contents($comic->image);
@@ -58,7 +57,6 @@ class ComicController extends BaseController {
 
 		echo $comic->title."<br>";
 		echo $comic->caption."<br>";
-		echo $fileName."<br>";
 		echo '<img src="data:image/jpeg;base64,' . base64_encode($img_data) . '" />';
 
 	}
