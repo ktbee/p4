@@ -14,14 +14,14 @@
 	@else
 		<h2>Login below</h2>
 		<br>
-		{{ Form::open(array('url' => '/')) }}
-		{{ Form::label('username', 'Username') }}
-		{{ Form::text('username') }}
-		<br>
-		{{ Form::label('password', 'Password') }}
-		{{ Form::password('password') }}
-		<br>
-		{{ Form::submit('Save') }}
+		{{ Form::open(array('url' => 'login')) }}
+			{{ Form::label('username', 'Username') }}
+			{{ Form::text('username') }}
+			<br>
+			{{ Form::label('password', 'Password') }}
+			{{ Form::password('password') }}
+			<br>
+			{{ Form::submit('Save') }}
 		{{ Form::close() }}
 	<br>
 	<br>

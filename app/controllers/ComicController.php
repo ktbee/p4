@@ -20,7 +20,9 @@ class ComicController extends BaseController {
 	 */
 	public function getIndex()
 	{
-		return View::make('user_home');
+		$comics = Comic::all();
+
+		return View::make('user_home')->with("comics",$comics);
 	}
 
 
@@ -46,19 +48,21 @@ class ComicController extends BaseController {
 		$comic = new Comic();
 		$comic->title = Input::get('title');
 		$comic->caption = Input::get('caption');
-		$comic->image = Input::file('image');
 		$comic->user_id = Auth::id(); // need to grab the user's ID for the post
-		$comic->save();
-		
-		//encode image to store in table
-		$img_data = file_get_contents($comic->image);
-		$type = pathinfo($comic->image, PATHINFO_EXTENSION);
-		$base64 = 'data:image/' . $type . ';base64,' . base64_encode($img_data);
 
-		echo $comic->title."<br>";
+		// give image a URL in the public folder
+		$image = Input::file('image');
+        $filename = date('Y-m-d')."-".$image->getClientOriginalName();
+        $path = public_path('images/'.$filename);
+        Image::make($image->getRealPath())->resize(300, 300)->save($path);
+        $imageURL = 'images/'.$filename;
+        $comic->imageURL = $imageURL;
+
+        $comic->save();
+
+        echo $comic->title."<br>";
 		echo $comic->caption."<br>";
-		echo '<img src="data:image/jpeg;base64,' . base64_encode($img_data) . '" />';
-
+		echo '<img src="'.$imageURL.'" />';
 	}
 
 

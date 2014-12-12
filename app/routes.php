@@ -61,20 +61,13 @@ Route::get('/', function()
 });
 
 
-Route::get('/{username}/home', function($username)
-{
-	$data['username'] = $username;
 
-	return View::make('user_home', $data);
-});
-
-
-Route::post('/comic/create', function()
+/*Route::post('/comic/create', function()
 {
 	$name = Input::file('image')->getClientOriginalName();
     Input::file('image')->move('/storage/test', $name);
     return 'File was moved.';
-});
+}); 
 
 
 
@@ -83,7 +76,7 @@ Route::get('/{username}/list/{tag}', function($username, $tag)
 	echo $username."'s comics listing by tag ".$tag;
 });
 
-/* Route::get('/truncate', function() {
+ Route::get('/truncate', function() {
 
     # Clear the tables to a blank slate
     DB::statement('SET FOREIGN_KEY_CHECKS=0'); # Disable FK constraints so that all rows can be deleted, even if there's an associated FK
@@ -103,6 +96,9 @@ Route::get('/login', 'UserController@getLogin' );
 Route::post('/signup', 'UserController@postSignup' );
 Route::post('/login', 'UserController@postLogin' );
 Route::get('/logout', 'UserController@getLogout' );
+
+
+
 
 /**
 * CRUD Comics
