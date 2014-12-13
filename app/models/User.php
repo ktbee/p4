@@ -29,7 +29,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 
     public function getId()
 		{
-		  return $this->id; // to use this ID in comics table
+		  return $this->id; // id is protected otherwise
 		}
 
 }

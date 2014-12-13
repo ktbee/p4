@@ -21,8 +21,14 @@ class ComicController extends BaseController {
 	public function getIndex()
 	{
 		$comics = Comic::all();
+     	$id = Auth::id();
+     	$user_id = Comic::with('user_id');
+     				
+		//return View::make('user_home')->with("comics",$comics);
+		return View::make('comic_index', array('comics'=> $comics,
+											  'id' => $id,
+											  'user_id' => $user_id));
 
-		return View::make('user_home')->with("comics",$comics);
 	}
 
 
@@ -33,7 +39,7 @@ class ComicController extends BaseController {
 	 */
 	public function getCreate()
 	{
-		return View::make('new_post');
+		return View::make('comic_add');
 	}
 
 
@@ -60,9 +66,7 @@ class ComicController extends BaseController {
 
         $comic->save();
 
-        echo $comic->title."<br>";
-		echo $comic->caption."<br>";
-		echo '<img src="'.$imageURL.'" />';
+        return Redirect::to('/comic')->with('flash_message', 'Comic successfully added!');
 	}
 
 
@@ -74,7 +78,8 @@ class ComicController extends BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$comics = Comic::all();
+		return View::
 	}
 
 
