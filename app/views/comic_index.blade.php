@@ -20,14 +20,10 @@
 								{{ $comic['caption'] }} 
 							</p>
 							<br>
-							<button><a href="#">View this comic</a></button> 
+							<button><a href={{url('/comic/'.$comic->id)}}>View this comic</a></button>
 						@endif
 					@endforeach
 				</div>
-			
-
-
-			
 		</div> <!-- end row -->
 
 		<div class="col-lg-6">

@@ -23,8 +23,7 @@ class ComicController extends BaseController {
 		$comics = Comic::all();
      	$id = Auth::id();
      	$user_id = Comic::with('user_id');
-     				
-		//return View::make('user_home')->with("comics",$comics);
+  
 		return View::make('comic_index', array('comics'=> $comics,
 											  'id' => $id,
 											  'user_id' => $user_id));
@@ -78,8 +77,14 @@ class ComicController extends BaseController {
 	 */
 	public function show($id)
 	{
-		$comics = Comic::all();
-		return View::
+		try {
+			$comic = Comic::findOrFail($id);
+		}
+		catch(Exception $e) {
+			return Redirect::to('/comic')->with('flash_message', 'Comic not found');
+		}
+		return View::make('comic_show')->with('comic', $comic);
+		
 	}
 
 
@@ -91,7 +96,13 @@ class ComicController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		try {
+			$comic = Comic::findOrFail($id);
+		}
+		catch(Exception $e) {
+			return Redirect::to('/comic')->with('flash_message', 'Comic not found');
+		}
+		return View::make('comic_edit')->with('comic', $comic);
 	}
 
 
@@ -103,7 +114,36 @@ class ComicController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		try {
+			$comic = Comic::findOrFail($id);
+		}
+		catch(Exception $e) {
+			return Redirect::to('/comic')->with('flash_message', 'Comic not found');
+		}
+
+		//check if form field has input, and if so get it
+		if(Input::has('title')){
+			$comic->title = Input::get('title');
+		};
+		if(Input::has('caption')){
+				$comic->caption = Input::get('caption');
+		}
+
+		$comic->user_id = Auth::id();
+
+		// give image a URL in the public folder if input present
+		if(Input::has('image')){ 
+			$image = Input::file('image');
+	        $filename = date('Y-m-d')."-".$image->getClientOriginalName();
+	        $path = public_path('images/'.$filename);
+	        Image::make($image->getRealPath())->resize(300, 300)->save($path);
+	        $imageURL = 'images/'.$filename;
+	        $comic->imageURL = $imageURL; 
+        };
+
+		$comic->save();
+
+		return Redirect::to('/comic/'.$comic->id)->with('flash_message','Your comic has been updated.');
 	}
 
 
