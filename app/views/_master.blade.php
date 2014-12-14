@@ -3,7 +3,8 @@
 <head>
 	<meta charset='utf8'>
 	<link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'>
-	<link rel='stylesheet' href='/css/custom.css' type='text/css'>
+	<link rel='stylesheet' href='{{url('css/custom.css')}}' type='text/css'>
+	<!-- <link rel='stylesheet' href="{{public_path('css/custom.css')}}" type='text/css'> -->
 	<title>
 		@yield('title', 'Comic Blog')
 	</title>

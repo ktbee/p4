@@ -11,12 +11,7 @@
 	<br>
 	<br>
 	<div>
-		<!-- {{ Form::model(array(
-		'url' => '/comic/'.$comic->id,
-		'method' => 'put',
-		'files' => true,
-		'action' => ['ComicController@update', $comic->id]
-	)) }} -->
+
 	{{ Form::model($comic, ['method' => 'put', 
 							'action' => ['ComicController@update', $comic->id], 
 							'files' => true])}}

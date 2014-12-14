@@ -22,7 +22,7 @@
 			<button><a href={{url('/comic/'.$comic->id.'/edit')}}>Edit comic</a></button>
 		</div>
 		<div class="col-lg-6">
-			<button>Delete</button>
+			<button><a href={{url('/comic/'.$comic->id.'/delete')}}>Delete comic</a></button>
 		</div>
 	</div>
 

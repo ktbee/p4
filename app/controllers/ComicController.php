@@ -153,9 +153,30 @@ class ComicController extends BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
+	public function destroyIndex($id)
+	{
+		try {
+			$comic = Comic::findOrFail($id);
+		}
+		catch(Exception $e) {
+			return Redirect::to('/comic')->with('flash_message', 'Comic not found');
+		}
+		return View::make('comic_delete')->with('comic', $comic);
+	}
+
+
+
 	public function destroy($id)
 	{
-		//
+		try {
+			$comic = Comic::findOrFail($id);
+		}
+		catch(Exception $e) {
+			return Redirect::to('/comic')->with('flash_message', 'Comic not found');
+		}
+		
+		Comic::destroy($id);
+		return Redirect::action('ComicController@getIndex')->with('flash_message','Your comic has been deleted.');
 	}
 
 

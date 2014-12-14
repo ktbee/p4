@@ -11,17 +11,17 @@
 		<br>
 		<h3>Check out some of the latest comics</h3>
 		<div class="comic">
-					@foreach($comics as $comic )
-							<h2>{{ $comic['title']}}</h2>
-							<br>
-							{{'<img src="'.$comic['imageURL'].'"/>'}}
-							<br>
-							<p>
-								{{ $comic['caption'] }} 
-							</p>
-							<br>
-					@endforeach
-				</div>
+			@foreach($comics as $comic )
+					<h2>{{ $comic['title']}}</h2>
+					<br>
+					{{'<img src="'.$comic['imageURL'].'"/>'}}
+					<br>
+					<p>
+						{{ $comic['caption'] }} 
+					</p>
+					<br>
+			@endforeach
+		</div>
 	@else
 		<h2>Login below</h2>
 		<br>
