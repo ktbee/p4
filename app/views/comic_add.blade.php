@@ -22,6 +22,9 @@
 		{{ Form::label('caption', 'Comic caption') }}
 		{{ Form::textarea('caption') }}
 		<br>
+		{{ Form::label('tag', 'Tag your comic') }}
+		{{ Form::textarea('tag') }}
+		<br>
 		{{ Form::submit('Create your comic!') }}
 
 	{{ Form::close() }}

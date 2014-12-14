@@ -7,4 +7,9 @@ class Comic extends Eloquent {
         return $this->belongsTo('User');
     }
 
+    public function tag() {
+
+        return $this->belongsToMany('Tag');
+    }
+
 }

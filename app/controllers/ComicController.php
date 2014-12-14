@@ -49,7 +49,7 @@ class ComicController extends BaseController {
 	 */
 	public function postStore()
 	{	
-		//get input from form
+		// get input from form
 		$comic = new Comic();
 		$comic->title = Input::get('title');
 		$comic->caption = Input::get('caption');
@@ -62,8 +62,16 @@ class ComicController extends BaseController {
         Image::make($image->getRealPath())->resize(300, 300)->save($path);
         $imageURL = 'images/'.$filename;
         $comic->imageURL = $imageURL;
-
         $comic->save();
+
+        // add a tag to the comic
+        $tag = new Tag;
+		$tag->name = Input::get('tag');
+		$tag->save();
+
+		$comic->tag()->attach($tag);
+
+        
 
         return Redirect::to('/comic')->with('flash_message', 'Comic successfully added!');
 	}
