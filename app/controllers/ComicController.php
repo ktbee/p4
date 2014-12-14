@@ -55,6 +55,7 @@ class ComicController extends BaseController {
 		$comic->caption = Input::get('caption');
 		$comic->user_id = Auth::id(); // need to grab the user's ID for the post
 
+
 		// give image a URL in the public folder
 		$image = Input::file('image');
         $filename = date('Y-m-d')."-".$image->getClientOriginalName();
@@ -64,12 +65,30 @@ class ComicController extends BaseController {
         $comic->imageURL = $imageURL;
         $comic->save();
 
-        // add a tag to the comic
-        $tag = new Tag;
-		$tag->name = Input::get('tag');
-		$tag->save();
 
-		$comic->tag()->attach($tag);
+        // add up to three tags to the comic
+        if(Input::has('tag1')){
+			$tag = new Tag;
+			$tag->name = Input::get('tag1');
+			$tag->save();
+
+			$comic->tag()->attach($tag);
+		};
+        
+
+		if(Input::has('tag2')){
+			$tag = new Tag;
+			$tag->name = Input::get('tag2');
+			$tag->save();
+			$comic->tag()->attach($tag);
+		};
+
+		if(Input::has('tag3')){
+			$tag = new Tag;
+			$tag->name = Input::get('tag3');
+			$tag->save();
+			$comic->tag()->attach($tag);
+		};
 
         
 
