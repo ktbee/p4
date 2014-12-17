@@ -16,15 +16,18 @@
 			{{ $comic->caption }} 
 		</p>
 		<br>
-	</div>
-	<div class="row">
-		<div class="col-lg-6">
-			<button><a href={{url('/comic/'.$comic->id.'/edit')}}>Edit comic</a></button>
+	
+		<div class="row">
+			<div class="col-lg-6">
+				<button class="btn btn-large btn-success"><a href={{url('/comic/'.$comic->id.'/edit')}}>Edit comic</a></button>
+			</div>
+			<div class="col-lg-6">
+				<button class="btn btn-large btn-warning"><a href={{url('/comic/'.$comic->id.'/delete')}}>Delete comic</a></button>
+			</div>
 		</div>
-		<div class="col-lg-6">
-			<button><a href={{url('/comic/'.$comic->id.'/delete')}}>Delete comic</a></button>
-		</div>
-	</div>
+	</div> <!-- end class comic -->
+<br>
+<br>
 
 	
 

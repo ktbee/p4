@@ -10,8 +10,11 @@
 	<br>
 	<br>
 	<br>
+	@foreach($errors->all() as $message)
+		<div class='error'>{{ $message }}</div>
+	@endforeach
+	<br>
 	<div>
-
 	{{ Form::model($comic, ['method' => 'put', 
 							'action' => ['ComicController@update', $comic->id], 
 							'files' => true])}}
@@ -25,6 +28,10 @@
     	<br>
 		{{ Form::label('caption', 'Edit caption') }}
 		{{ Form::textarea('caption') }}
+		<br>
+		<br>
+		{{ Form::label('tag1', 'Add another tag to your comic') }}
+		{{ Form::textarea('tag1') }}
 		<br>
 		<br>
 		{{ Form::submit('Update your comic!') }}

@@ -5,6 +5,7 @@
 @stop
 
 @section('content')
+
 	@if(Auth::check())
 		<h1>comic home page</h1>
 		<br>
@@ -25,14 +26,15 @@
 	@else
 		<h2>Login below</h2>
 		<br>
-		{{ Form::open(array('url' => 'login')) }}
+		{{ Form::open(array('url' => 'login', 'class' => 'input-group')) }}
 			{{ Form::label('username', 'Username') }}
 			{{ Form::text('username') }}
 			<br>
 			{{ Form::label('password', 'Password') }}
 			{{ Form::password('password') }}
 			<br>
-			{{ Form::submit('Sign in') }}
+			<br>
+			{{ Form::submit('Sign in', ['class' => 'btn btn-large btn-success']) }}
 		{{ Form::close() }}
 	<br>
 	<br>

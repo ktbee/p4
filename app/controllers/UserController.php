@@ -29,7 +29,7 @@ class UserController extends BaseController {
 		# validation rules
 		$rules = array(
 			'email' => 'required|email|unique:users,email',
-			'password' => 'required|min:8'
+			'password' => 'required|min:8',
 		);
 
 		$validator = Validator::make(Input::all(), $rules);
@@ -74,7 +74,7 @@ class UserController extends BaseController {
 		$username = Input::get('username');
 
 		if (Auth::attempt($credentials, $remember = false)) {
-			return Redirect::intended('/comic')->with('flash_message', '<h2>Welcome back, '.$username.'!</h2>');
+			return Redirect::intended('/comic')->with('flash_message', 'Welcome back, '.$username.'!');
 		}
 		else {
 			return Redirect::to('/login')
