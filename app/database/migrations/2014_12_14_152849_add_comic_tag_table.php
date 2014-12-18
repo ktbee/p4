@@ -18,8 +18,8 @@ class AddComicTagTable extends Migration {
 			$table->integer('tag_id')->unsigned();
 			
 
-			$table->foreign('comic_id')->references('id')->on('comics')->onDelete('cascade');
-			$table->foreign('tag_id')->references('id')->on('tags')->onDelete('cascade');
+			$table->foreign('comic_id')->references('id')->on('comics');
+			$table->foreign('tag_id')->references('id')->on('tags';
 			
 		});
 	}
