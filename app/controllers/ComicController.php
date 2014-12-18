@@ -80,9 +80,9 @@ class ComicController extends BaseController {
 		// give image a URL in the public folder
 		$image = Input::file('image');
         $filename = date('Y-m-d')."-".$image->getClientOriginalName();
-        $path = public_path('images/'.$filename);
+        $path = 'http://p4.katiebroida.info/images/'.$filename);
         Image::make($image->getRealPath())->resize(300, 300)->save($path);
-        $imageURL = 'http://p4.katiebroida.info/images/'.$filename;
+        $imageURL = .$filename;
         $comic->imageURL = $imageURL;
         $comic->save(); 
 
