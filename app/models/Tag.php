@@ -15,4 +15,11 @@ class Tag extends Eloquent {
         }
         return $tags;
     }
+    
+    public static function boot() {
+        parent::boot();
+        static::deleting(function($tag) {
+            DB::statement('DELETE FROM comic_tag WHERE tag_id = ?', array($tag->id));
+        });
+	}
 }
