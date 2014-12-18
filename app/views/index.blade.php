@@ -23,7 +23,7 @@
 						{{ $comic['caption'] }} 
 					</p>
 					<br>
-					<button class="center-block btn btn-lg btn-success"><a href={{url('/comic/'.$comic->id)}}> this comic</a></button>
+					<button class="center-block btn btn-lg btn-success"><a href={{url('/comic/'.$comic->id)}}>View this comic</a></button>
 					<br>
 					<p>Tags: 
 						@foreach ($comic->tag as $tag)
