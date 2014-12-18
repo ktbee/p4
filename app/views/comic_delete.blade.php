@@ -7,7 +7,8 @@
 @section('content')
 <br>
 	<h2>Are you sure you want to delete this comic?</h2>
-
+	<br>
+	<br>
 	<div class="comic">
 		<h2>{{ $comic->title }}</h2>
 		<br>

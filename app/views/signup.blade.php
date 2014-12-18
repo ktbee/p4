@@ -7,6 +7,8 @@
 
 @section('content')
 	<br>
+	<h2>Sign up for a new account</h2>
+	<br>
 	@foreach($errors->all() as $message)
 		<div class='error'>{{ $message }}</div>
 	@endforeach
@@ -22,7 +24,7 @@
 	    {{ Form::label('password', 'Choose a password with a minimum of 8 digits') }}<br>
 	    {{ Form::password('password') }}<br><br>
 
-	    {{ Form::submit('Submit') }}
+	    {{ Form::submit('Submit', ['class' => 'btn btn-lg btn-success']) }}
 
 	{{ Form::close() }}
 

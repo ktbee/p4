@@ -24,21 +24,23 @@
 			@endforeach
 		</div>
 	@else
-		<h2>Login below</h2>
+		<div class="center-block index">
+			<h2>Log in below</h2>
+			<br>
+			{{ Form::open(array('url' => 'login', 'class' => 'input-group')) }}
+				{{ Form::label('username', 'Username') }}
+				{{ Form::text('username') }}
+				<br>
+				{{ Form::label('password', 'Password') }}
+				{{ Form::password('password') }}
+				<br>
+				<br>
+				{{ Form::submit('Sign in', ['class' => 'btn btn-lg btn-success']) }}
+			{{ Form::close() }}
 		<br>
-		{{ Form::open(array('url' => 'login', 'class' => 'input-group')) }}
-			{{ Form::label('username', 'Username') }}
-			{{ Form::text('username') }}
-			<br>
-			{{ Form::label('password', 'Password') }}
-			{{ Form::password('password') }}
-			<br>
-			<br>
-			{{ Form::submit('Sign in', ['class' => 'btn btn-large btn-success']) }}
-		{{ Form::close() }}
-	<br>
-	<br>
-	<a href={{url('/signup')}}><h3>Or sign up here</h3></a>
-	<br>
+		<br>
+		<a href={{url('/signup')}}><h3>Or sign up here</h3></a>
+		<br>
+	</div>
 	@endif
 @stop
