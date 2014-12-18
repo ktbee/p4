@@ -1,4 +1,4 @@
-##Developer's Best Friend
+##Comic Blog
 
 ###Fourth project for Dynamic Web Applications
 ###12/17/2014
@@ -12,7 +12,7 @@
 This is a app to create image posts with captions. Eventually the idea is to create comics for each post that can be embedded in other blogging platforms.
 
 ##Demo
-
+http://screencast.com/t/1RnGMGqUsrjY
 
 
 ##Details for teaching team
