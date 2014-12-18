@@ -17,7 +17,7 @@
 	    {{ Form::label('password', 'Password') }}<br>
 	    {{ Form::password('password') }}<br><br>
 
-	    {{ Form::submit('Submit') }}
+	    {{ Form::submit('Submit', ['class' => 'btn btn-lg btn-success']) }}
 
 	{{ Form::close() }}
 

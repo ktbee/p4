@@ -11,18 +11,33 @@
 		<br>
 		<br>
 		<h3>Check out some of the latest comics</h3>
-		<div class="comic">
+		<br>
 			@foreach($comics as $comic )
+				<div class="comic">
 					<h2>{{ $comic['title']}}</h2>
 					<br>
-					{{'<img src="'.$comic['imageURL'].'"/>'}}
+					{{'<img src="'.$comic['imageURL'].'">'}}
+					<br>
 					<br>
 					<p>
 						{{ $comic['caption'] }} 
 					</p>
 					<br>
-			@endforeach
-		</div>
+					<button class="center-block btn btn-lg btn-success"><a href={{url('/comic/'.$comic->id)}}> this comic</a></button>
+					<br>
+					<p>Tags: 
+						@if(isset($comic->tag))
+						@foreach ($comic->tag as $tag)
+						  {{ $tag->name.", " }}
+						@endforeach
+						@else 
+							{{" no tags added yet"}}
+						@endif
+					</p>
+				</div>
+				<br>
+				<br>
+		@endforeach
 	@else
 		<div class="center-block index">
 			<h2>Log in below</h2>

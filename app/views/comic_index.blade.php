@@ -6,6 +6,8 @@
 
 @section('content')
 	<h2>{{$username}}'s comics home</h2>
+	<br>
+	<h3>Start posting some comics!</h3>
 	
 		@foreach($comics as $comic )
 			@if($id==$comic['user_id'])

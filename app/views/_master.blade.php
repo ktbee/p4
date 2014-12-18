@@ -47,7 +47,7 @@
 
 	        <div class="collapse navbar-collapse" id="guest-nav">
 	          <ul class="nav navbar-nav">
-	            <li class="active"><a href={{url('/signin')}}><span class="glyphicon glyphicon-flash" aria-hidden="true"></span>&nbsp;sign in</a></li>
+	            <li class="active"><a href={{url('/signup')}}><span class="glyphicon glyphicon-flash" aria-hidden="true"></span>&nbsp;sign up</a></li>
 	          </ul>
 	        </div><!-- /.navbar-collapse -->
 	      </div>
